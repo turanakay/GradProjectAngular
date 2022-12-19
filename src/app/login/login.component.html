@@ -1,0 +1,39 @@
+<body>
+    <div class="wrapper fadeInDown" style="padding-top: 200px;">
+        <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Welcome</h2>
+        <br><br><br><br>
+
+    
+        <!-- Icon -->
+        <!-- <div class="fadeIn first">
+            <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+        </div> -->
+    
+        <!-- Login Form -->
+        <form [formGroup]="loginForm!" (ngSubmit)='onSubmit()'>
+            <input type="text" formControlName='username'  id="login" class="fadeIn second"  placeholder="login">
+            <br>
+            <input type="password" formControlName='password' id="password" class="fadeIn third"  placeholder="password">
+            <br><br><br>
+            <input type="submit" class="fadeIn fourth"  value="Submit">
+        </form>
+        <form (ngSubmit)='onSubmit2()'>
+            <div>
+                <button class="hollow button primary" >
+                  <img width="20px" style="margin-bottom:-1px; margin-right:5px" alt="Google login" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+                  Sign in/up with Google
+                </button>
+              </div>
+            <br><br>
+        </form>
+        <div id="formFooter">
+            <a class="underlineHover" >Ens492 Admin Panel</a>
+        </div>
+        </div>
+        <div [hidden]="hidden" style="margin-top: 50px;">
+            <mat-spinner style="margin: auto;"></mat-spinner>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+<header>
+  <div class="header">
+    <!-- <a href="#default" class="logo">CompanyLogo</a> -->
+    <div class="header-right row">
+      <a class="active" href="/map">Home</a>
+      <a class="active" style="margin-left: 10px;" href="/eventList">My Events</a>
+      <a class="active" style="margin-left: 10px;" href="/changePass">Profile</a>
+      <!-- <a href="#contact">Contact</a> -->
+      <a (click)="Logout()">Logout</a>
+    </div>
+  </div>
+</header>
+
+<body>
+  <div class="row" style="margin: 75px;">
+      <div class="col-lg-12" style="width:80vw; margin-left: 8vw;margin-right: auto;" >
+          <div class = "formRow" #formRow>    
+            <div style="background: powderblue;">
+               <form>
+                <div class="banner">
+                  <h1>Created Events By You</h1>
+                </div>
+                 <!-- Personal-Information -->
+                 <div class="panel panel-default panel-fill">
+                  <div class="panel-body">
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead>
+                                  <tr>
+                                      <th>Project Name</th>
+                                      <th>Max Player Size</th>
+                                      <th>Max Group Size</th>
+                                      <th>Start Date</th>
+                                      <th>Due Date</th>
+                                      <th>Status</th>
+                                      <th>Edit</th>
+                                      <th>Action</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor = "let field of fieldArray; let i = index">
+                                    <td> <span [(ngModel)] = "field.eventName" readonly  name="{{field.eventName}}" ngDefaultControl>{{field.eventName}}</span></td>
+                                    <td> <span [(ngModel)] = "field.maxPlayerSize" readonly  name="{{field.maxPlayerSize}}" ngDefaultControl>{{field.maxPlayerSize}}</span></td>
+                                    <td> <span [(ngModel)] = "field.maxGroupSize" readonly  name="{{field.maxGroupSize}}" ngDefaultControl>{{field.maxGroupSize}}</span></td>
+                                    <td> <span [(ngModel)] = "field.startDate" readonly  name="{{field.startDate}}" ngDefaultControl>{{field.startDate}}</span></td>
+                                    <td> <span [(ngModel)] = "field.dueDate" readonly  name="{{field.dueDate}}" ngDefaultControl>{{field.dueDate}}</span></td>
+                                    <td *ngIf = "field.status === 'waiting'">
+                                      <span class="label label-success">Game Not Started Yet</span>
+                                    </td>
+                                    <td *ngIf = "field.status === 'Game Started'">
+                                      <span class="label label-warning">Game Already Started</span>
+                                    </td>
+                                    <td *ngIf = "field.status === 'Game End'">
+                                      <span class="label label-danger">Game Over</span>
+                                    </td>
+                                    <td *ngIf = "field.status !== 'Game End'">
+                                       <a [routerLink] = "" (click)="OnClickEdit(field.res)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </td>
+                                    <td *ngIf = "field.status === 'Game End'">
+                                       <a style="pointer-events: none; cursor: default;color: red;" [routerLink] = "" (click)="OnClickEdit(field.res)"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </td>
+                                    <td> <button style="padding: 4px !important; padding-left: 6px !important; padding-right: 6px !important; background: red !important" (click)="OnClickMyDelete(field.eventName)"><span class="glyphicon glyphicon-remove"></span></button></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                      <mat-spinner [hidden]="hidden" style="left: 60px; margin: auto;"></mat-spinner>
+                  </div>
+              </div>
+               </form>
+              </div>
+        </div>
+      </div>
+      <button style=
+      "padding: 4px !important;
+      padding-left: 6px !important;
+      padding-right: 6px !important;
+      background: rgb(143, 197, 61) !important;
+      width: 20vw;
+      height: 3vw;
+      margin-left: 40vw;
+      margin-top: 70px;
+      font-size: 24px;" 
+      (click)="createGame()"
+      class="raise"><span>Create New Game</span></button>
+  </div>
+</body>

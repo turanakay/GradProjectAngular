@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "ens491-6ae91"
+  },
+  "targets": {
+    "ens491-6ae91": {
+      "hosting": {
+        "ens4922": [
+          "ens491-6ae91"
+        ]
+      }
+    }
+  }
+}

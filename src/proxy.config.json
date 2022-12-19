@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://ens491slm.herokuapp.com",
+      "secure": false,
+      "pathRewrite": {
+        "^/api": ""
+      },
+      "changeOrigin": true
+    }
+  }

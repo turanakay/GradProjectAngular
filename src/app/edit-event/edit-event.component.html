@@ -1,0 +1,119 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<header>
+  <div class="header">
+    <!-- <a href="#default" class="logo">CompanyLogo</a> -->
+    <div class="header-right">
+      <a class="active" href="/map">Home</a>
+      <a class="active" style="margin-left: 10px;" href="/eventList">My Events</a>
+      <a class="active" style="margin-left: 10px;" href="/changePass">Profile</a>
+      <!-- <a href="#contact">Contact</a> -->
+      <a (click)="Logout()">Logout</a>
+    </div>
+  </div>
+</header>
+
+<body>
+  <div class="row" style="margin: 75px;">
+      <div class="col-lg-6" style="width:60%; bottom: 52px;">
+          <div style="width: 90%; height: 50px;">
+            <label class="switch" style="float: right;">
+              <input type="checkbox" (change) = "switch($event)">
+              <span class="slider round"></span>
+            </label>
+            <label style="font-size: 20px; float:right; margin-right: 20px; margin-top: 4px;">Chosing Final Location</label>
+          </div>
+          <div id="map" style="width: 90%;"></div>
+      </div>
+      <div class="col-lg-6" style="width:40%" >
+          <div class = "formRow" #formRow>    
+            <div style="background: powderblue;">
+               <form [formGroup]="loginForm!" (ngSubmit)="onSubmit()">
+                 <div class="banner">
+                   <h1>Edit Event Form</h1>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="item">
+                       <p>Event Name<span class="required">*</span></p>
+                       <div class="name-item">
+                         <input required formControlName="eventName" id="w3review" type="text" name="w3review" rows="4" cols="50" [attr.disabled]="''">
+                       </div>
+                   </div>
+                   </div>
+                   <div class="col-md-5">
+                    <div class="item">
+                      <p>Select New Admins</p>
+                      <select multiple="multiple" id="myMulti">
+                        <option id="optionFinder" *ngFor="let item of admins;">{{item}}</option>
+                      </select>
+                  </div>
+                  </div>
+                 </div>
+                 <div class="item">
+                   <p>Event Description<span class="required">*</span></p>
+                   <div class="name-item">
+                     <textarea required formControlName="eventDescription" id="w3review" name="w3review" rows="4" cols="50">
+                       </textarea>
+                   </div>
+                </div>
+                <div class="item">
+                  <p>Max Player Size <span class="required">*</span></p>
+                  <div class="name-item">
+                    <input required formControlName="maxPlayerSize" id="w3review" type="text" name="w3review" rows="4" cols="50">
+                  </div>
+              </div>
+                <div class="item">
+                  <p>Max Group Size<span class="required">*</span></p>
+                  <div class="name-item">
+                    <input required formControlName="maxGroupSize" id="w3review" type="text" name="w3review" rows="4" cols="50">
+                  </div>
+              </div>
+                 <div class="position-item" style="flex-flow: column-reverse">
+                   <div class="row">
+                    <div class="col-md-6">
+                      <div class="item">
+                        <p>Estimated Start Date<span class="required">*</span></p>
+                        <input formControlName="sDate" type="datetime-local"  name="startdate" required/>
+                        <i class="fas fa-calendar-alt"></i>
+                      </div>
+                    </div>
+                     <div class="col-md-6">
+                       <div class="item">
+                         <p>Estimated End Date<span class="required">*</span></p>
+                         <input formControlName="eDate" type="datetime-local"  name="enddate" required/>
+                         <i class="fas fa-calendar-alt"></i>
+                       </div>
+                     </div>
+                    <div class="inputRow" #inputRow>
+                      <!-- <p>Upload a photo:</p> -->
+                      <div formArrayName = 'photos'>
+                        <div *ngFor = 'let item of Photos.controls; let i  = index' [formGroupName] = 'i' >
+                          <label name="" *ngIf = 'i > 0 && item.value.id != null; else elseBlock'>
+                            Upload a Photo for {{i}}  : <a id="mouserEnter" [routerLink] = "" (click)="OnClickDelete(item.value.photo)"><span>Current Item {{item.value.id}}</span></a> <input type="file" name="file" accept="file/,video/*" (change)="onFileChange($event, i)">
+                          </label>
+                          <ng-template #elseBlock>
+                            <label name="" *ngIf = 'i > 0'>
+                              Upload a Photo for {{i}}  : <input formControlName = 'photo'  type="file" name="file" accept="file/,video/*" (change)="onFileChange($event, i)">
+                            </label>
+                          </ng-template>
+                          <button name="" type = "button" *ngIf = 'i > 0' (click) = "Delete(i)">Delete</button>
+                        </div>
+                      </div>
+                        <!-- <input formControlName="photo" type="file" name="file" accept="file/*"> -->
+                      </div>
+                   </div><!-- accepte image/png, image/gif, image/jpeg-->
+                 </div>
+                 <label> Final Location: <a id="mouserEnter" [routerLink] = "" (click)="OnClickDelete(this.result.finLoc.files)"><span>Current Item {{this.result.finLoc.id}}</span></a>
+                  <input formControlName = 'finalPhoto'  type="file" name="file" accept="file/,video/*" (change)="onFileChange2($event)">
+                 </label>
+                 <div class="btn-block" style="text-align-last: center;">
+                   <br>
+                   <button type="submit" [disabled]="loginForm.invalid">Submit</button>
+                 </div>
+               </form>
+              </div>
+        </div>
+      </div>
+  </div>
+</body>

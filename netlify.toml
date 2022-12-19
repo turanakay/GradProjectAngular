@@ -1,0 +1,62 @@
+[build]
+  publish = "dist/ens4922"
+  command = "ng build"
+[[redirects]]
+  from = "/api/apasslogin"
+  to = "https://ens491slm.herokuapp.com/apasslogin"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/login/"
+  to = "https://ens491slm.herokuapp.com/login/"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/signOut"
+  to = "https://ens491slm.herokuapp.com/signOut"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/isAdminLoggedIn"
+  to = "https://ens491slm.herokuapp.com/isAdminLoggedIn"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/apisignup"
+  to = "https://ens491slm.herokuapp.com/apisignup"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/yukle/"
+  to = "https://ens491slm.herokuapp.com/yukle/"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/getAdminGame"
+  to = "https://ens491slm.herokuapp.com/getAdminGame"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/setAdminGame"
+  to = "https://ens491slm.herokuapp.com/setAdminGame"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/adminDelGame"
+  to = "https://ens491slm.herokuapp.com/adminDelGame"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/adminDelLoc"
+  to = "https://ens491slm.herokuapp.com/adminDelLoc"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/changePass"
+  to = "https://ens491slm.herokuapp.com/changePass"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
